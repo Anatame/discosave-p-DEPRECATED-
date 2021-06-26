@@ -1,0 +1,37 @@
+*{
+   margin: 0;
+ }
+ body {
+   border-radius: 8px;
+   padding: 30px;
+   background-color: #2f3136;
+ }
+ .popupdiv{ 
+   height: 350px;
+   width:250px;
+   background-color: #18191C;
+   display: flex;
+   justify-content:center;
+   align-items: center;
+   box-shadow: 0 8px 16px rgba(0,0,0,0.24)
+ }
+ 
+ .button{
+   height: 40px;;
+   width: 120px;
+   border-radius: 4px;
+   background-color: #5895F2;
+   color: white;
+   border: none;
+   outline: none;
+ }
+ 
+ .button:hover{
+   background-color: #7289dac2;
+ }
+ 
+ .button:active{
+ background-color: #6984e470;
+ }
+ 
+ 
