@@ -1,0 +1,16 @@
+{
+  "name": "extensionparcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rm -rf dist .cache .parcel-cache",
+    "build" : "parcel build src/background.js && parcel build src/html/popup.html src/html/sign-out.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel-plugin-static-files-copy": "^2.6.0"
+  }
+}

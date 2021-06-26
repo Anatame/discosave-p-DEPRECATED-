@@ -1,0 +1,38 @@
+{
+  "name": "DiscoSave",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [{
+    "resources": ["/images/*"],
+    "matches": [ "https://discord.com/*" ]
+  }],
+
+  "permissions": ["storage", "activeTab", "scripting", "webRequest", "webNavigation", "identity"],
+  "host_permissions": [
+    "http://*/",
+    "*://*.discord.com/*",
+    "https://*.127.0.0.1/",
+    "https://127.0.0.1:5000/",
+    "http://127.0.0.1:5000/items"
+  ],
+ "action": {
+    "default_title": "Press Ctrl(Win)/Command(Mac)+Shift+Right/Left to flip tabs",
+    "default_popup": "popup.html", 
+    "default_icon": {
+      "16": "/images/get_started16.png",
+      "32": "/images/get_started32.png",
+      "48": "/images/get_started48.png",
+      "128": "/images/get_started128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/get_started16.png",
+    "32": "/images/get_started32.png",
+    "48": "/images/get_started48.png",
+    "128": "/images/get_started128.png"
+  }
+}
