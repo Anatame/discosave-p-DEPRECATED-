@@ -5,7 +5,7 @@ import getUserData from "./methods/getUserData";
 import activateScript from "./methods/activateScript";
 import repeater from "./methods/repeater";
 
-export default {
+export {
    getParamByName,
    getDiscordUri,
    postData,

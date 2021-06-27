@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "rm -rf dist .cache .parcel-cache",
-    "build": "parcel build src/background.js && parcel build --no-minify src/html/popup.html src/html/signOut.html"
+    "build": "parcel build --no-minify src/background.js && parcel build --no-minify src/html/popup.html src/html/signOut.html"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +16,8 @@
   "devDependencies": {
     "cssnano": "^5.0.6",
     "postcss": "^8.2.15"
-  }
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }
