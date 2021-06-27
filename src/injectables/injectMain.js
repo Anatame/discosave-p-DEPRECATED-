@@ -1,4 +1,4 @@
-function injectMain() {
+export default function() {
    // function activate(){
    let img, imgHover, imgClick;
    chrome.storage.sync.get(

@@ -1,3 +1,4 @@
+import {activateScript, injectMainScript} from "./injectables/activateScript";
 import {
    getParamByName,
    getDiscordUri,
@@ -9,6 +10,7 @@ import {
 console.log(getDiscordUri())
 
 let user_signed_in = false;
+
 
 chrome.runtime.onInstalled.addListener(function () {
    chrome.action.setBadgeText({
@@ -29,7 +31,7 @@ chrome.storage.sync.set({
 chrome.webNavigation.onCompleted.addListener(function (tab) {
    if (tab.frameId == 0) {
       console.log("activated");
-      activateScript1();
+      activateScript();
    }
 });
 
@@ -38,7 +40,13 @@ chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
    if (request.msg == "login") {
     
       launchAuthFlow(sendResponse);
-       return true;
+      return true;
+   } else if (request.msg == "logOut") {
+      user_signed_in = false;
+      sendResponse("success");
+      return false;
+   } else if (request.msg == "scriptActivated") {
+      injectMainScript();
    }
 })
 
@@ -48,7 +56,7 @@ function launchAuthFlow(sendResponse) {
         url: getDiscordUri(),
         interactive: true,
       }, (redirect_uri) => {
-        console.log(getUserData("https://discordapp.com/api/users/@me", getParamByName('access_token', redirect_uri)))
+        getUserData("https://discordapp.com/api/users/@me", getParamByName('access_token', redirect_uri))
         console.log(redirect_uri);
         if (
           chrome.runtime.lastError ||
