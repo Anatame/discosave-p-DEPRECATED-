@@ -1,4 +1,4 @@
-async function getUserData(url, token) {
+export default async function getUserData(url, token) {
    console.log(token)
    response = await fetch(url, {
          method: 'GET', // or 'PUT'
