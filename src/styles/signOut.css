@@ -82,8 +82,15 @@
 
  } */
 
- .channelContainer{
+ #guildContainer{
   margin-top:80px;
+   color: white;
+   visibility: visible;
+   position: relative;
+ }
+
+ .channelContainer{
+  margin-top:40px;
    color: white;
    visibility: visible;
    position: relative;

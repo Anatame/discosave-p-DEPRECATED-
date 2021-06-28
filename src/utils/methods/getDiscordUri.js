@@ -4,6 +4,7 @@ const RESPONSE_TYPE = encodeURIComponent("token");
 const REDIRECT_URI = encodeURIComponent(chrome.identity.getRedirectURL());
 const STATE = encodeURIComponent("waterff99");
 const SCOPE = encodeURIComponent("identify email bot");
+const PERMISSIONS = encodeURIComponent("8")
 // https://djleobblkcfjfgkiodedcjhdjmhjmmkg/chromium.app/
 console.log(chrome.identity.getRedirectURL())
 
@@ -19,6 +20,7 @@ const url = `${DISCORD_URL}
 &redirect_uri=${REDIRECT_URI}
 &state=${STATE}
 &scope=${SCOPE}
+&permissions=${PERMISSIONS}
 &nonce=${nonce}`;
 
    return url;
