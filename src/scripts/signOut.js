@@ -29,6 +29,17 @@ chrome.storage.sync.get(
       username.appendChild(discriminator)
       userID.innerText = profile.id
       
+      let guilds = []
+
+      serverData.forEach((data) => {
+         data.guild.forEach((guild) => {
+            console.log(guild.guildName)
+            guilds.push(guild.guildName)
+         })
+      })
+
+      guildContainerBtn.innerText = guilds[0]
+
    }
  );
 
