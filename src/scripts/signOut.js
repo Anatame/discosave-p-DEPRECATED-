@@ -7,7 +7,7 @@ let userID = document.getElementById("userID")
 let guildContainer = document.getElementById("guildContainer")
 let guildContainerBtn = document.getElementById("guildContainerBtn")
 let guildList = document.getElementById("guildList")
-let guildItem = document.getElementById("guildItem")
+//let guildItem = document.getElementById("guildItem")
 
 let channelContainer = document.getElementById('channelContainer')
 let channelContainerBtn = document.getElementById("channelContainerBtn")
@@ -41,11 +41,26 @@ chrome.storage.sync.get(
          serverData.forEach((data) => {
             data.guild.forEach((guild) => {
                console.log(guild.guildName)
-               guilds.push(guild.guildName)
+               guilds.push({name: guild.guildName, id: guild.id, channels: guild.guildChannels})
             })
          })
 
-         guildContainerBtn.innerText = guilds[0]
+         guildContainerBtn.innerText = guilds[0].name
+
+         console.log(guilds)
+         guilds.forEach((guild) => {
+            let item = document.createElement("button")
+               item.classList.add("item")
+            item.innerText = guild.name
+            
+            item.addEventListener("click", (e) => {
+               guildList.style.display = "none"
+               guildListVisible = false;
+               window.scrollTo(0, -300);
+            })
+            
+            guildList.append(item)
+         })
       }
 
    }
@@ -60,11 +75,7 @@ guildContainerBtn.addEventListener("click", (e) => {
    window.scrollTo(0, 300);
 })
 
-guildItem.addEventListener("click", (e) => {
-   guildList.style.display = "none"
-   guildListVisible = false;
-   window.scrollTo(0, -300);
-})
+
 
 channelContainerBtn.addEventListener("click", (e) => {
    channelList.style.display = "block"
