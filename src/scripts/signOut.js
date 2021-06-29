@@ -14,39 +14,47 @@ let channelContainerBtn = document.getElementById("channelContainerBtn")
 let channelList = document.getElementById("channelList")
 
 logoutBtn.addEventListener("click", (e) => {
-   chrome.runtime.sendMessage({ msg: 'login' }, (response) => {
+   chrome.runtime.sendMessage({
+      msg: 'login'
+   }, (response) => {
       if (response === 'success') window.locaction.replace('./popup.html')
    })
 })
 
 chrome.storage.sync.get(
    ["profile", "serverData"],
-   ({profile, serverData}) => {
+   ({
+      profile,
+      serverData
+   }) => {
       avatar.src = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`
       username.innerText = profile.username
       discriminator.innerText = `#${profile.discriminator}`;
       discriminator.classList.add('tag')
       username.appendChild(discriminator)
       userID.innerText = profile.id
-      
-      let guilds = []
 
-      serverData.forEach((data) => {
-         data.guild.forEach((guild) => {
-            console.log(guild.guildName)
-            guilds.push(guild.guildName)
+      if (serverData) {
+         console.log(serverData)
+         let guilds = []
+
+         serverData.forEach((data) => {
+            data.guild.forEach((guild) => {
+               console.log(guild.guildName)
+               guilds.push(guild.guildName)
+            })
          })
-      })
 
-      guildContainerBtn.innerText = guilds[0]
+         guildContainerBtn.innerText = guilds[0]
+      }
 
    }
- );
+);
 
 let guildListVisible = false;
 
 guildContainerBtn.addEventListener("click", (e) => {
- 
+
    guildList.style.display = "block"
    guildListVisible = true;
    window.scrollTo(0, 300);
