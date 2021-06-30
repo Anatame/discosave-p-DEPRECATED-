@@ -13,6 +13,7 @@ let channelContainer = document.getElementById('channelContainer')
 let channelContainerBtn = document.getElementById("channelContainerBtn")
 let channelList = document.getElementById("channelList")
 
+
 logoutBtn.addEventListener("click", (e) => {
    chrome.runtime.sendMessage({
       msg: 'login'
@@ -66,32 +67,38 @@ chrome.storage.sync.get(
                guildList.style.display = "none"
                guildListVisible = false;
                window.scrollTo(0, -200);
+               renderChannels(guilds, item.getAttribute("id"))
             })
             console.log(item)
             guildList.append(item)
 
-            guild.channels.forEach((channel, cindex) => {
-               let citem = document.createElement("button")
-               citem.classList.add("item")
-               citem.innerText = channel.channelName
-               citem.setAttribute("id", cindex);
-      
-               citem.addEventListener("click", (e) => {
-                  channelContainerBtn.innerText =  guilds[0].channels[citem.getAttribute("id")].channelName
-                  channelList.style.display = "none"
-                  channelListVisible = false;
-                  window.scrollTo(0, -300);
-               })
-               console.log(citem)
-               channelList.append(citem)
-            })
          })
+
+         renderChannels(guilds, 0)
       }
 
 
 
    }
 );
+
+function renderChannels(guilds, selectedGuild){
+   guilds[selectedGuild].channels.forEach((channel, cindex) => {
+      let citem = document.createElement("button")
+      citem.classList.add("item")
+      citem.innerText = channel.channelName
+      citem.setAttribute("id", cindex);
+
+      citem.addEventListener("click", (e) => {
+         channelContainerBtn.innerText =  guilds[selectedGuild].channels[citem.getAttribute("id")].channelName
+         channelList.style.display = "none"
+         channelListVisible = false;
+         window.scrollTo(0, -300);
+      })
+      console.log(citem)
+      channelList.append(citem)
+   })
+   }
 
 let guildListVisible = false;
 let channelListVisible = false;
