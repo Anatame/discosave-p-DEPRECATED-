@@ -41,19 +41,25 @@ chrome.storage.sync.get(
          serverData.forEach((data) => {
             data.guild.forEach((guild) => {
                console.log(guild.guildName)
-               guilds.push({name: guild.guildName, id: guild.id, channels: guild.guildChannels})
+               guilds.push({
+                  name: guild.guildName,
+                  id: guild.id,
+                  channels: guild.guildChannels
+               })
             })
          })
 
+         console.log(guilds[0].channels[0])
          guildContainerBtn.innerText = guilds[0].name
+         channelContainerBtn.innerText = guilds[0].channels[0].channelName
 
          console.log(guilds)
          guilds.forEach((guild, index) => {
             let item = document.createElement("button")
-               item.classList.add("item")
+            item.classList.add("item")
             item.innerText = guild.name
             item.setAttribute("id", index);
-            
+
             item.addEventListener("click", (e) => {
                guildContainerBtn.innerText = guilds[item.getAttribute("id")].name
                console.log(guilds[item.getAttribute("id")].name)
@@ -63,13 +69,32 @@ chrome.storage.sync.get(
             })
             console.log(item)
             guildList.append(item)
+
+            guild.channels.forEach((channel, cindex) => {
+               let citem = document.createElement("button")
+               citem.classList.add("item")
+               citem.innerText = channel.channelName
+               citem.setAttribute("id", cindex);
+      
+               citem.addEventListener("click", (e) => {
+                  channelContainerBtn.innerText =  guilds[0].channels[citem.getAttribute("id")].channelName
+                  channelList.style.display = "none"
+                  channelListVisible = false;
+                  window.scrollTo(0, -300);
+               })
+               console.log(citem)
+               channelList.append(citem)
+            })
          })
       }
+
+
 
    }
 );
 
 let guildListVisible = false;
+let channelListVisible = false;
 
 guildContainerBtn.addEventListener("click", (e) => {
 
@@ -82,5 +107,6 @@ guildContainerBtn.addEventListener("click", (e) => {
 
 channelContainerBtn.addEventListener("click", (e) => {
    channelList.style.display = "block"
+   channelListVisible = true;
    window.scrollTo(0, 300);
 })
