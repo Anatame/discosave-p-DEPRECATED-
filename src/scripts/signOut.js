@@ -48,17 +48,20 @@ chrome.storage.sync.get(
          guildContainerBtn.innerText = guilds[0].name
 
          console.log(guilds)
-         guilds.forEach((guild) => {
+         guilds.forEach((guild, index) => {
             let item = document.createElement("button")
                item.classList.add("item")
             item.innerText = guild.name
+            item.setAttribute("id", index);
             
             item.addEventListener("click", (e) => {
+               guildContainerBtn.innerText = guilds[item.getAttribute("id")].name
+               console.log(guilds[item.getAttribute("id")].name)
                guildList.style.display = "none"
                guildListVisible = false;
-               window.scrollTo(0, -300);
+               window.scrollTo(0, -200);
             })
-            
+            console.log(item)
             guildList.append(item)
          })
       }
@@ -72,7 +75,7 @@ guildContainerBtn.addEventListener("click", (e) => {
 
    guildList.style.display = "block"
    guildListVisible = true;
-   window.scrollTo(0, 300);
+   window.scrollTo(0, 200);
 })
 
 
