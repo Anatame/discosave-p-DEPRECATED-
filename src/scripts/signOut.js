@@ -67,7 +67,6 @@ chrome.storage.sync.get(
                guildList.style.display = "none"
                guildListVisible = false;
                window.scrollTo(0, -200);
-               
                //childNodes is a live collection, removing elements messes wih the iterator, Array.from() copies the vhildNodes array
                Array.from(channelList.childNodes).forEach(element => element.remove())
                renderChannels(guilds, item.getAttribute("id"))
@@ -98,6 +97,8 @@ function renderChannels(guilds, selectedGuild){
          channelList.style.display = "none"
          channelListVisible = false;
          window.scrollTo(0, -300);
+         chrome.storage.sync.set({ channelID: guilds[selectedGuild].channels[citem.getAttribute("id")].channelID })
+         console.log(guilds[selectedGuild].channels[citem.getAttribute("id")].channelID)
       })
       console.log(citem)
       channelList.append(citem)

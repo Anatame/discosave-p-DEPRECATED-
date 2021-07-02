@@ -3,7 +3,7 @@ const CLIENT_ID = encodeURIComponent("855041441902493736");
 const RESPONSE_TYPE = encodeURIComponent("token");
 const REDIRECT_URI = encodeURIComponent(chrome.identity.getRedirectURL());
 const STATE = encodeURIComponent("waterff99");
-const SCOPE = encodeURIComponent("identify email bot");
+const SCOPE = encodeURIComponent("identify email bot guilds");
 const PERMISSIONS = encodeURIComponent("8")
 // https://djleobblkcfjfgkiodedcjhdjmhjmmkg/chromium.app/
 console.log(chrome.identity.getRedirectURL())

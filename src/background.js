@@ -2,7 +2,8 @@ import {activateScript, injectMainScript} from "./injectables/activateScript";
 import {
    getParamByName,
    getDiscordUri,
-   getUserData
+   getUserData,
+   postData
 } from './utils';
 
 // import test from './utils/methods/test'
@@ -47,8 +48,18 @@ chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
       return false;
    } else if (request.msg == "scriptActivated") {
       injectMainScript();
+   } else if (request.msg == "sendMessage") {
+     sendMessage()
    }
 })
+
+function sendMessage() {
+   chrome.storage.sync.get(
+      ["channelID", "message"],
+      ({ channelID, message }) => {
+         postData("http://127.0.0.1:5000/users/message", {channel: channelID, messageContent: message})
+      })
+}
 
 function launchAuthFlow(sendResponse) {
    chrome.identity.launchWebAuthFlow(
@@ -56,18 +67,21 @@ function launchAuthFlow(sendResponse) {
         url: getDiscordUri(),
         interactive: true,
       }, (redirect_uri) => {
-        getUserData("https://discordapp.com/api/users/@me", getParamByName('access_token', redirect_uri))
-        console.log(redirect_uri);
-        if (
-          chrome.runtime.lastError ||
-          redirect_uri.includes("access_denied")
-        ) {
-          sendResponse("fail");
-          return;
-        } else {
-          user_signed_in = true
-          sendResponse("success");
-        }
+
+         console.log(redirect_uri);
+         if (
+           chrome.runtime.lastError ||
+           redirect_uri.includes("access_denied")
+         ) {
+           sendResponse("fail");
+           return;
+         } else {
+           user_signed_in = true
+           sendResponse("success");
+         }
+         
+         getUserData("https://discordapp.com/api/users/@me", "https://discordapp.com/api/users/@me/guilds", getParamByName('access_token', redirect_uri))            
+      
       }
     );
 }

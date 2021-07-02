@@ -103,7 +103,7 @@ export default function () {
                       });
 
                       chrome.runtime.sendMessage({
-                        messageContent: messageContainer.childNodes[1].innerText,
+                        msg: "sendMessage",
                       });
                     } else if (messageContainer.childNodes.length == 3) {
                       console.log("alone");
@@ -114,7 +114,7 @@ export default function () {
                       });
 
                       chrome.runtime.sendMessage({
-                        messageContent: messageContainer.childNodes[2].innerText,
+                        msg: "sendMessage",
                       });
                     } else if (messageContainer.childNodes.length == 4) {
                       console.log("containsReply");
@@ -127,7 +127,7 @@ export default function () {
                       });
 
                       chrome.runtime.sendMessage({
-                        messageContent: messageContainer.childNodes[3].innerText,
+                        msg: "sendMessage",
                       });
                     }
                   } else if (event.type == "mouseenter") {
