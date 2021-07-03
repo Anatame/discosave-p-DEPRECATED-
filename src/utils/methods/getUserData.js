@@ -25,6 +25,13 @@ export default async function getUserData(userUrl, guildUrl, token) {
       // Log the data to the console
       // You would do something with both sets of data here
       console.log(data);
+
+      let userGuilds = data[1].filter((guild) => guild.owner == true)
+      console.log(userGuilds)
+      chrome.storage.sync.set({
+         "profile": data[0],
+         "userGuilds": userGuilds,
+      })
    }).catch(function (error) {
       // if there's an error, log it
       console.log(error);
