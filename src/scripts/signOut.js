@@ -46,6 +46,7 @@ setInterval(() => {
                      chrome.storage.sync.set({
                         "serverData": sdata
                      })
+                     Array.from(guildList.childNodes).forEach(element => element.remove())
                      guilds = []
                      sdata.forEach((data) => {
 
