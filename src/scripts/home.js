@@ -13,14 +13,28 @@ let guildList = document.getElementById("guildList")
 // let channelContainerBtn = document.getElementById("channelContainerBtn")
 // let channelList = document.getElementById("channelList")
 
+let guildsWithBot = []
+
 chrome.storage.sync.get(
-   ["userGuilds", "serverData"],
+   ["userGuilds"],
    async ({
       userGuilds, serverData
    }) => {
-      userGuilds.forEach(guild => console.log(guild))
+      userGuilds.forEach( async (guild) => {
+         await fetch(`http://127.0.0.1:5000/users/${guild.id}`)
+         .then(response => response.json())
+            .then(data => {
+               console.log(data)
+            if (data.id != "notFound") {
+               guildsWithBot.push(data)
+               console.log(data)
+          }
+         });
+      })
+ 
    })
 
+   console.log(guildsWithBot)
 
 
 
