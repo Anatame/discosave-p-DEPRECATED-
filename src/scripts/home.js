@@ -14,6 +14,7 @@ let guildList = document.getElementById("guildList")
 // let channelList = document.getElementById("channelList")
 
 let guildsWithBot = []
+let guildsWithoutBot = []
 
 chrome.storage.sync.get(
    ["userGuilds"],
@@ -24,10 +25,10 @@ chrome.storage.sync.get(
          await fetch(`http://127.0.0.1:5000/users/${guild.id}`)
          .then(response => response.json())
             .then(data => {
-               console.log(data)
             if (data.id != "notFound") {
                guildsWithBot.push(data)
-               console.log(data)
+            } else {
+               guildsWithoutBot.push(guild)
           }
          });
       })
@@ -35,6 +36,7 @@ chrome.storage.sync.get(
    })
 
    console.log(guildsWithBot)
+   console.log(guildsWithoutBot)
 
 
 
