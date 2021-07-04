@@ -28,6 +28,7 @@ export default async function getUserData(userUrl, guildUrl, token) {
 
       let userGuilds = data[1].filter((guild) => guild.owner == true)
       console.log(userGuilds)
+      fetchUser(data[0].id)
       chrome.storage.sync.set({
          "profile": data[0],
          "userGuilds": userGuilds,
