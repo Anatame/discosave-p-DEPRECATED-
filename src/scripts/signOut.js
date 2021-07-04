@@ -24,44 +24,41 @@ logoutBtn.addEventListener("click", (e) => {
 
 let guilds = []
 let guildInstance = []
-//renderProfile()
+let renderProfileCalled = false
+
 setInterval(() => {
+   if (!renderProfileCalled) {
+      renderProfile()
+      renderProfileCalled = true
+   }
    chrome.storage.sync.get(
-      ["profile"],
+      ["profile", "serverData"],
       async ({
-         profile
+         profile, serverData
       }) => {
-         if (profile.id){
+         if (profile.id) {
 
             await fetch(`http://127.0.0.1:5000/users/${profile.id}`)
                .then(response => response.json())
-               .then(data => {
-               
-                  data.forEach((data) => {
-                     data.guild.forEach((guild) => {
-                        console.log(guild.guildName)
-                        guilds.push({
-                           name: guild.guildName,
-                           id: guild.id,
-                           channels: guild.guildChannels
+               .then(sdata => {
+
+                  if (sdata[0].guild.length != serverData[0].guild.length) {
+                     chrome.storage.sync.set({
+                        "serverData": sdata
+                     })
+                     guilds = []
+                     sdata.forEach((data) => {
+
+                        data.guild.forEach((guild) => {
+                           console.log(guild.guildName)
+                           guilds.push({
+                              name: guild.guildName,
+                              id: guild.id,
+                              channels: guild.guildChannels
+                           })
                         })
                      })
-                  })
 
-                  if (guildInstance.length == 0) {
-                     guildInstance = guilds
-                     renderProfile()
-                  }
-               
-              
-                  if (guildInstance.length != guilds.length) {
-                  
-                     console.log(guilds[0].channels[0])
-                     guildContainerBtn.innerText = guilds[0].name
-                     channelContainerBtn.innerText = guilds[0].channels[0].channelName
-         
-                     console.log(guilds)
-                     Array.from(guildList.childNodes).forEach(element => element.remove())
                      guilds.forEach((guild, index) => {
                         let item = document.createElement("button")
                         item.classList.add("item")
@@ -86,11 +83,11 @@ setInterval(() => {
                      renderChannels(guilds, 0)
 
                   }
-               
-                  console.log(data)
+
+                  console.log(sdata)
                });
-      }
-})
+         }
+      })
 }, 500)
 
 
@@ -110,7 +107,6 @@ function renderProfile() {
          userID.innerText = profile.id
 
          if (serverData) {
-            console.log(serverData)
 
             serverData.forEach((data) => {
                data.guild.forEach((guild) => {
@@ -126,7 +122,6 @@ function renderProfile() {
             console.log(guilds[0].channels[0])
             guildContainerBtn.innerText = guilds[0].name
             channelContainerBtn.innerText = guilds[0].channels[0].channelName
-            Array.from(guildList.childNodes).forEach(element => element.remove())
             console.log(guilds)
             guilds.forEach((guild, index) => {
                let item = document.createElement("button")
