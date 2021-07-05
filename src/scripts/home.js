@@ -13,35 +13,52 @@ let guildList = document.getElementById("guildList")
 // let channelContainerBtn = document.getElementById("channelContainerBtn")
 // let channelList = document.getElementById("channelList")
 
-let guildsWithBot = []
-let guildsWithoutBot = []
+
 
 chrome.storage.sync.get(
-   ["userGuilds"],
-   async ({
-      userGuilds, serverData
-   }) => {
-      userGuilds.forEach( async (guild) => {
-         await fetch(`http://127.0.0.1:5000/users/${guild.id}`)
-         .then(response => response.json())
-            .then(data => {
-            if (data.id != "notFound") {
-               guildsWithBot.push(data)
-            } else {
-               guildsWithoutBot.push(guild)
-          }
-         });
-      })
- 
+["userGuilds"],
+ ({
+   userGuilds,
+   serverData
+}) => {
+
+
+   userGuilds.forEach(async (guild, index) => {
+      let response = await fetch(`http://127.0.0.1:5000/users/${guild.id}`)
+      response = await response.json();
+      if (response.id != "notFound") {
+        handleGuildRender(response, index)
+      } else {
+         console.log(guild)
+         handleGuildRender(guild, index)
+      }
    })
 
-   console.log(guildsWithBot)
-   console.log(guildsWithoutBot)
+})
 
 
 
-let guildListVisible = false;
-let channelListVisible = false;
+function handleGuildRender(guild, index) {
+   let item = document.createElement("button")
+   item.classList.add("item")
+   if (guild.guildName) {
+      item.innerText = `${guild.guildName} --GuildWithBot`
+   } else {
+      item.innerText = guild.name
+   }
+   
+   item.setAttribute("id", index);
+
+   item.addEventListener("click", (e) => {
+      consle.log(clicked)
+   })
+
+   guildList.append(item)
+}
+
+
+// let guildListVisible = false;
+// let channelListVisible = false;
 
 // guildContainerBtn.addEventListener("click", (e) => {
 
@@ -49,6 +66,5 @@ let channelListVisible = false;
 //    guildListVisible = true;
 //    window.scrollTo(0, 200);
 // })
-
 
 
