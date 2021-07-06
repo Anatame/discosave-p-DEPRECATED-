@@ -42,6 +42,7 @@ function handleGuildRender(guild, index) {
    //https://cdn.discordapp.com/icons/798483750883295303/a8ec3d3f91efe9cc35e52bb647fd32ac.png
 
    let item = document.createElement("div")
+   item.style.margin = "20px"
    let img = document.createElement("img");
    let title = document.createElement("h3")
    img.classList.add("guildAvatar")
@@ -63,7 +64,7 @@ function handleGuildRender(guild, index) {
    item.setAttribute("id", index);
 
    item.addEventListener("click", (e) => {
-      console.log(clicked)
+      console.log("clicked")
    })
 
    guildList.append(item)
