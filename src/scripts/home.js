@@ -64,7 +64,7 @@ function handleGuildRender(guild, index) {
    item.setAttribute("id", index);
 
    item.addEventListener("click", (e) => {
-      consle.log(clicked)
+      console.log(clicked)
    })
 
    guildList.append(item)
