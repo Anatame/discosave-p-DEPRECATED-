@@ -115,20 +115,20 @@
  }
 
  .list{
-   display:flex;
+  display:flex;
+  flex-wrap: wrap;
   top: 70px;
   width: 100%;
   padding-bottom: 50px;
+  
   /* display: none; */
  }
 
  .item{
-   display: block;
-   text-align: start;
    border: none;
    outline: none;
    color: white;
-   padding-left: 10px
+   padding: 10px
  }
 
  /* .item:hover{
@@ -151,6 +151,12 @@
    background: none;
  }
 
+
+
  .guildAvatar{
-   height: 40px;
+   height: 100px;
+ }
+ .guildTitle{
+   width:120px;
+   font-size: 14px;
  }

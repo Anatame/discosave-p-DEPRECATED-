@@ -44,8 +44,6 @@ function handleGuildRender(guild, index) {
    let item = document.createElement("div")
    let img = document.createElement("img");
    let title = document.createElement("h3")
-
-   item.classList.add("item")
    img.classList.add("guildAvatar")
    title.classList.add("guildTitle")
 
@@ -58,6 +56,7 @@ function handleGuildRender(guild, index) {
       
    } else {
       img.src = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`
+      img.style.filter = "grayscale(100%)"
       title.innerText = guild.name
    }
    
