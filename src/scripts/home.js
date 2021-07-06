@@ -53,6 +53,7 @@ function handleGuildRender(guild, index) {
 
    if (guild.guildName) {
       img.src = guild.icon
+      img.style.border = "3px solid #ff008c"
       title.innerText = `${guild.guildName} --GuildWithBot`
       
    } else {
