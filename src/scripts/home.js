@@ -16,13 +16,12 @@ let guildList = document.getElementById("guildList")
 
 
 chrome.storage.sync.get(
-["userGuilds"],
+["userGuilds", "profile"],
  ({
    userGuilds,
-   serverData
+   profile
 }) => {
-
-
+   renderProfile(profile);
    userGuilds.forEach(async (guild, index) => {
       let response = await fetch(`http://127.0.0.1:5000/users/${guild.id}`)
       response = await response.json();
@@ -43,6 +42,7 @@ function handleGuildRender(guild, index) {
 
    let item = document.createElement("div")
    item.style.margin = "20px"
+   item.style.textAlign = "center"
    let img = document.createElement("img");
    let title = document.createElement("h3")
    img.classList.add("guildAvatar")
@@ -70,15 +70,12 @@ function handleGuildRender(guild, index) {
    guildList.append(item)
 }
 
+function renderProfile(profile){
+   avatar.src = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`
+   username.innerText = profile.username
+   discriminator.innerText = `#${profile.discriminator}`;
+   discriminator.classList.add('tag')
+   username.appendChild(discriminator)
+   userID.innerText = profile.id
 
-// let guildListVisible = false;
-// let channelListVisible = false;
-
-// guildContainerBtn.addEventListener("click", (e) => {
-
-//    guildList.style.display = "block"
-//    guildListVisible = true;
-//    window.scrollTo(0, 200);
-// })
-
-
+}
