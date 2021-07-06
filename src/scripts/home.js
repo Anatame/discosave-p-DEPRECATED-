@@ -39,12 +39,26 @@ chrome.storage.sync.get(
 
 
 function handleGuildRender(guild, index) {
-   let item = document.createElement("button")
+   //https://cdn.discordapp.com/icons/798483750883295303/a8ec3d3f91efe9cc35e52bb647fd32ac.png
+
+   let item = document.createElement("div")
+   let img = document.createElement("img");
+   let title = document.createElement("h3")
+
    item.classList.add("item")
+   img.classList.add("guildAvatar")
+   title.classList.add("guildTitle")
+
+   item.append(img)
+   item.appendChild(title)
+
    if (guild.guildName) {
-      item.innerText = `${guild.guildName} --GuildWithBot`
+      img.src = guild.icon
+      title.innerText = `${guild.guildName} --GuildWithBot`
+      
    } else {
-      item.innerText = guild.name
+      img.src = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`
+      title.innerText = guild.name
    }
    
    item.setAttribute("id", index);

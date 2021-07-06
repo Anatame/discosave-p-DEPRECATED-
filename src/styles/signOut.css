@@ -122,20 +122,17 @@
  }
 
  .item{
-   display: block;
-   width: 100%;
-   height: 40px;
+  display: flex;
    text-align: start;
    border: none;
    outline: none;
-   background-color:#3b3c3da6;
    color: white;
    padding-left: 10px
  }
 
- .item:hover{
+ /* .item:hover{
   background-color:#4e4e4e;
- }
+ } */
 
  .logout-container{
     top: 20px;
@@ -152,4 +149,7 @@
    outline: none;
    background: none;
  }
- 
+
+ .guildAvatar{
+   height: 40px;
+ }
