@@ -10,8 +10,8 @@ let guildList = document.getElementById("guildList")
 //let guildItem = document.getElementById("guildItem")
 
 let channelContainer = document.getElementById('channelContainer')
-// let channelContainerBtn = document.getElementById("channelContainerBtn")
-// let channelList = document.getElementById("channelList")
+let channelContainerBtn = document.getElementById("channelContainerBtn")
+let channelList = document.getElementById("channelList")
 
 channelContainer.style.display = "none"
 
@@ -66,10 +66,9 @@ function handleGuildRender(guild, index) {
       img.style.filter = "grayscale(100%)"
       title.innerText = guild.name
 
-      // item.addEventListener("click", (e) => {
-      //    console.log("clicked")
-      //    handleGuildClick(guild.channels)
-      // })
+      item.addEventListener("click", (e) => {
+         console.log("authorize bot first")
+      })
    }
    
    item.setAttribute("id", index);
@@ -92,5 +91,30 @@ function renderProfile(profile){
 function handleGuildClick(channels) {
    guildContainer.style.display = "none"
    channelContainer.style.display = "block"
-   console.log(channels)
+   channelList.style.display = "none"
+
+   channelContainerBtn.innerText = channels[0].channelName
+   channelContainerBtn.addEventListener("click", (e) => {
+      channelList.style.display = "block"
+   })
+
+   channels.forEach((channel) => {
+      let item = document.createElement("button")
+      item.classList.add('item')
+      item.setAttribute("channelID", channel.channelID)
+
+      item.innerText = channel.channelName
+      console.log(channel.channelName)
+     
+
+      item.addEventListener("click", () => {
+         console.log(item.getAttribute("channelID"))
+         channelList.style.display = "none"
+         channelContainerBtn.innerText = item.innerText
+      })
+
+      channelList.append(item)
+   })
+   
+   
 }
