@@ -100,7 +100,7 @@ function handleGuildClick(channels) {
 
    channels.forEach((channel) => {
       let item = document.createElement("button")
-      item.classList.add('item')
+      item.classList.add('Btnitem')
       item.setAttribute("channelID", channel.channelID)
 
       item.innerText = channel.channelName
