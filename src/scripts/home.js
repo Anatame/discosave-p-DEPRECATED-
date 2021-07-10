@@ -46,7 +46,6 @@ function handleGuildRender(guild, index) {
    let img = document.createElement("img");
    let title = document.createElement("h3")
    img.classList.add("guildAvatar")
-   img.addEventListener("click", () => handleGuildClick())
    title.classList.add("guildTitle")
 
    item.append(img)
@@ -56,18 +55,26 @@ function handleGuildRender(guild, index) {
       img.src = guild.icon
       img.style.border = "3px solid #ff008c"
       title.innerText = `${guild.guildName} --GuildWithBot`
+
+      item.addEventListener("click", (e) => {
+         console.log("clicked")
+         handleGuildClick(guild.guildChannels)
+      })
       
    } else {
       img.src = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`
       img.style.filter = "grayscale(100%)"
       title.innerText = guild.name
+
+      // item.addEventListener("click", (e) => {
+      //    console.log("clicked")
+      //    handleGuildClick(guild.channels)
+      // })
    }
    
    item.setAttribute("id", index);
 
-   item.addEventListener("click", (e) => {
-      console.log("clicked")
-   })
+
 
    guildList.append(item)
 }
@@ -82,7 +89,8 @@ function renderProfile(profile){
 
 }
 
-function handleGuildClick() {
+function handleGuildClick(channels) {
    guildContainer.style.display = "none"
    channelContainer.style.display = "block"
+   console.log(channels)
 }
