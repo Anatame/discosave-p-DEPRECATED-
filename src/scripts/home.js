@@ -12,6 +12,7 @@ let guildList = document.getElementById("guildList")
 let channelContainer = document.getElementById('channelContainer')
 let channelContainerBtn = document.getElementById("channelContainerBtn")
 let channelList = document.getElementById("channelList")
+let doneBtn = document.getElementById("doneBtn")
 
 channelContainer.style.display = "none"
 
@@ -118,3 +119,9 @@ function handleGuildClick(channels) {
    
    
 }
+
+doneBtn.addEventListener("click", () => {
+   guildContainer.style.display = "block"
+   channelContainer.style.display = "none"
+   Array.from(channelList.childNodes).forEach(element => element.remove())
+})
