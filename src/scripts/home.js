@@ -9,11 +9,11 @@ let guildContainerBtn = document.getElementById("guildContainerBtn")
 let guildList = document.getElementById("guildList")
 //let guildItem = document.getElementById("guildItem")
 
-// let channelContainer = document.getElementById('channelContainer')
+let channelContainer = document.getElementById('channelContainer')
 // let channelContainerBtn = document.getElementById("channelContainerBtn")
 // let channelList = document.getElementById("channelList")
 
-
+channelContainer.style.display = "none"
 
 chrome.storage.sync.get(
 ["userGuilds", "profile"],
@@ -46,6 +46,7 @@ function handleGuildRender(guild, index) {
    let img = document.createElement("img");
    let title = document.createElement("h3")
    img.classList.add("guildAvatar")
+   img.addEventListener("click", () => handleGuildClick())
    title.classList.add("guildTitle")
 
    item.append(img)
@@ -79,4 +80,9 @@ function renderProfile(profile){
    username.appendChild(discriminator)
    userID.innerText = profile.id
 
+}
+
+function handleGuildClick() {
+   guildContainer.style.display = "none"
+   channelContainer.style.display = "block"
 }
