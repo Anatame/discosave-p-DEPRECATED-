@@ -4,6 +4,12 @@ let username = document.getElementById("userName")
 let discriminator = document.createElement('span')
 let userID = document.getElementById("userID")
 
+let profileContainer = document.getElementById("profileContainer")
+let selectedGuildContainer = document.getElementById("selectedGuildContainer")
+let selectedGuildImage = document.getElementById("selectedGuildImage")
+let selectedGuildTitle = document.getElementById("selectedGuildTitle")
+selectedGuildContainer.style.display = "none"
+
 let guildContainer = document.getElementById("guildContainer")
 let guildContainerBtn = document.getElementById("guildContainerBtn")
 let guildList = document.getElementById("guildList")
@@ -60,7 +66,7 @@ function handleGuildRender(guild, index) {
 
       item.addEventListener("click", (e) => {
          console.log("clicked")
-         handleGuildClick(guild.guildChannels)
+         handleGuildClick(guild.icon, guild.guildName, guild.guildChannels)
       })
       
    } else {
@@ -90,10 +96,15 @@ function renderProfile(profile){
 
 }
 
-function handleGuildClick(channels) {
+function handleGuildClick(icon, name, channels) {
    guildContainer.style.display = "none"
    channelContainer.style.display = "block"
    channelList.style.display = "none"
+
+   profileContainer.style.display = "none"
+   selectedGuildContainer.style.display = "block"
+   selectedGuildImage.src = icon
+   selectedGuildTitle.innerText = name
 
    channelContainerBtn.innerText = channels[0].channelName
    channelContainerBtn.addEventListener("click", (e) => {
@@ -124,6 +135,9 @@ function handleGuildClick(channels) {
 doneBtn.addEventListener("click", () => {
    guildContainer.style.display = "block"
    channelContainer.style.display = "none"
+
+   profileContainer.style.display =  "block"
+   selectedGuildContainer.style.display = "none"
    Array.from(channelList.childNodes).forEach(element => element.remove())
 })
 
