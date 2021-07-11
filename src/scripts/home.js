@@ -103,6 +103,7 @@ function handleGuildClick(icon, name, channels) {
 
    profileContainer.style.display = "none"
    selectedGuildContainer.style.display = "block"
+
    selectedGuildImage.src = icon
    selectedGuildTitle.innerText = name
 
