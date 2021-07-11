@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 *{
    margin: 0;
    padding: 0;
-   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;
  }
 
  body {
@@ -11,8 +14,8 @@
  }
  .parentDiv{ 
    position: relative;
-   min-height: 350px;
-   width: 300px;
+   min-height: 491px;
+   width: 460px;
    background-color: #18191C;
    border-radius: 8px;
    padding-left: 30px;
@@ -27,24 +30,25 @@
 
  .avatarImage{
     margin-top: 30px;
+    height: 80px;
  }
 
  .userName{
    margin-top: 20px;
     color: white;
-    font-size: 18px
+    font-size: 24px;
  }
 
 .tag{
     color: gray;
-    font-size: 16px;
+    font-size: 18px;
     margin-left: 5px;
  } 
 
  .userID{
    margin-top: 20px;
    color: white;
-   font-size: 16px;
+   font-size: 18px;
  }
 
  .userID span{

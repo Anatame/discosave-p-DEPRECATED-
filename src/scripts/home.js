@@ -125,3 +125,12 @@ doneBtn.addEventListener("click", () => {
    channelContainer.style.display = "none"
    Array.from(channelList.childNodes).forEach(element => element.remove())
 })
+
+
+// let roboto_font = new FontFace('Roboto-Regular',  `url(${chrome.runtime.getURL("/fonts/Roboto-Regular.ttf")})`);
+// roboto_fon.load().then(function(loaded_face) {
+// 	document.fonts.add(loaded_face);
+//   	document.body.style.fontFamily = '"Roboto-Regular"';
+// }).catch(function(error) {
+// 	// error occurred
+// });
