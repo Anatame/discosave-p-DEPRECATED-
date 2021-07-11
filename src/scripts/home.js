@@ -42,6 +42,7 @@ function handleGuildRender(guild, index) {
    //https://cdn.discordapp.com/icons/798483750883295303/a8ec3d3f91efe9cc35e52bb647fd32ac.png
 
    let item = document.createElement("div")
+   /* Top, Right, Bottom, Left */
    item.style.margin = "20px"
    item.style.textAlign = "center"
    let img = document.createElement("img");
@@ -54,7 +55,7 @@ function handleGuildRender(guild, index) {
 
    if (guild.guildName) {
       img.src = guild.icon
-      img.style.border = "3px solid #ff008c"
+      img.style.border = "2px solid #ff008c"
       title.innerText = `${guild.guildName} --GuildWithBot`
 
       item.addEventListener("click", (e) => {
