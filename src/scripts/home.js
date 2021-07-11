@@ -18,7 +18,7 @@ let guildList = document.getElementById("guildList")
 let channelContainer = document.getElementById('channelContainer')
 let channelContainerBtn = document.getElementById("channelContainerBtn")
 let channelList = document.getElementById("channelList")
-let doneBtn = document.getElementById("doneBtn")
+let changeBtn = document.getElementById("changeGuildBtn")
 
 channelContainer.style.display = "none"
 
@@ -125,6 +125,9 @@ function handleGuildClick(icon, name, channels) {
          console.log(item.getAttribute("channelID"))
          channelList.style.display = "none"
          channelContainerBtn.innerText = item.innerText
+         chrome.storage.sync.set({
+            channelID: item.getAttribute("channelID")
+         })
       })
 
       channelList.append(item)
@@ -133,7 +136,7 @@ function handleGuildClick(icon, name, channels) {
    
 }
 
-doneBtn.addEventListener("click", () => {
+changeBtn.addEventListener("click", () => {
    guildContainer.style.display = "block"
    channelContainer.style.display = "none"
 
