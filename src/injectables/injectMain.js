@@ -91,15 +91,22 @@ export default function () {
                   toolTip.style.opacity = "0";
 
                   function getMessage(nodeIndex) {
+                    let baseURI = ""
                     let message = ""
                     messageContainer.childNodes[nodeIndex].childNodes.forEach((node) => {
                       if (node) {
                         if (node.nodeName == "SPAN") {
                           console.log(node.firstChild.ariaLabel)
                           message += node.firstChild.ariaLabel
+                          if (baseURI != node.baseURI) {
+                            baseURI = node.baseURI
+                          }
                         } else {
                           console.log("Text node")
                           message += node.textContent
+                          if (baseURI != node.baseURI) {
+                            baseURI = node.baseURI
+                          }
                         }
                         
                       } else {
@@ -107,8 +114,12 @@ export default function () {
                       }
                     })
 
-                    console.log(message)
-                    return message;
+                    let data = {
+                      message: message,
+                      baseURI: baseURI,
+                    }
+                    console.log(data)
+                    return data;
                   }
 
                   if (event.type == "click") {
@@ -118,7 +129,7 @@ export default function () {
                       console.log("contained");
                       console.log(messageContainer.childNodes[1].innerText);
                       console.log(messageContainer.childNodes[1].childNodes)
-                      let messageData = getMessage(1)
+                      let messageData = getMessage(1).message
 
                       chrome.storage.sync.set({
                         message: messageData,
@@ -132,7 +143,7 @@ export default function () {
                       console.log(messageContainer.childNodes[2].innerText);
                       console.log(messageContainer.childNodes[2].childNodes)
 
-                      let messageData = getMessage(2)
+                      let messageData = getMessage(2).message
 
                       chrome.storage.sync.set({
                         message: messageData,
@@ -148,7 +159,7 @@ export default function () {
                       );
                       console.log(messageContainer.childNodes[3].childNodes)
 
-                      let messageData = getMessage(3)
+                      let messageData = getMessage(3).message
 
                       chrome.storage.sync.set({
                         message: messageData,
