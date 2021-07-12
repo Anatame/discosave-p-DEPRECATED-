@@ -118,10 +118,10 @@ export default function () {
                       console.log("contained");
                       console.log(messageContainer.childNodes[1].innerText);
                       console.log(messageContainer.childNodes[1].childNodes)
-                      getMessage(1)
+                      let messageData = getMessage(1)
 
                       chrome.storage.sync.set({
-                        message: messageContainer.childNodes[1].innerText,
+                        message: messageData,
                       });
 
                       chrome.runtime.sendMessage({
@@ -132,10 +132,10 @@ export default function () {
                       console.log(messageContainer.childNodes[2].innerText);
                       console.log(messageContainer.childNodes[2].childNodes)
 
-                      getMessage(2)
+                      let messageData = getMessage(2)
 
                       chrome.storage.sync.set({
-                        message: messageContainer.childNodes[2].innerText,
+                        message: messageData,
                       });
 
                       chrome.runtime.sendMessage({
@@ -148,10 +148,10 @@ export default function () {
                       );
                       console.log(messageContainer.childNodes[3].childNodes)
 
-                      getMessage(3)
+                      let messageData = getMessage(3)
 
                       chrome.storage.sync.set({
-                        message: messageContainer.childNodes[3].innerText,
+                        message: messageData,
                       });
 
                       chrome.runtime.sendMessage({
