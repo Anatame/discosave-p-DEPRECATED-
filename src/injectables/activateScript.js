@@ -16,7 +16,6 @@ async function activateScript() {
             chrome.runtime.sendMessage({
               msg: "scriptActivated",
             });
-            console.log("Injected script 1");
 
           }, 1000);
      },

@@ -19,7 +19,6 @@ export default function () {
 
 
   if (mainElement) {
-    console.log("defined");
 
     mainElement.forEach((item) => {
       let btnNum = 0;
@@ -91,12 +90,35 @@ export default function () {
                   toolTip.style.fontWeight = "500";
                   toolTip.style.opacity = "0";
 
+                  function getMessage(nodeIndex) {
+                    let message = ""
+                    messageContainer.childNodes[nodeIndex].childNodes.forEach((node) => {
+                      if (node) {
+                        if (node.nodeName == "SPAN") {
+                          console.log(node.firstChild.ariaLabel)
+                          message += node.firstChild.ariaLabel
+                        } else {
+                          console.log("Text node")
+                          message += node.textContent
+                        }
+                        
+                      } else {
+                        console.log("undefined")
+                      }
+                    })
+
+                    console.log(message)
+                    return message;
+                  }
+
                   if (event.type == "click") {
                     console.log("click");
 
                     if (messageContainer.childNodes.length == 2) {
                       console.log("contained");
                       console.log(messageContainer.childNodes[1].innerText);
+                      console.log(messageContainer.childNodes[1].childNodes)
+                      getMessage(1)
 
                       chrome.storage.sync.set({
                         message: messageContainer.childNodes[1].innerText,
@@ -108,6 +130,9 @@ export default function () {
                     } else if (messageContainer.childNodes.length == 3) {
                       console.log("alone");
                       console.log(messageContainer.childNodes[2].innerText);
+                      console.log(messageContainer.childNodes[2].childNodes)
+
+                      getMessage(2)
 
                       chrome.storage.sync.set({
                         message: messageContainer.childNodes[2].innerText,
@@ -121,6 +146,9 @@ export default function () {
                       console.log(
                         messageContainer.childNodes[3].innerText + " ahh"
                       );
+                      console.log(messageContainer.childNodes[3].childNodes)
+
+                      getMessage(3)
 
                       chrome.storage.sync.set({
                         message: messageContainer.childNodes[3].innerText,
@@ -164,5 +192,4 @@ export default function () {
       });
     });
   }
-  console.log("Interval");
 }
