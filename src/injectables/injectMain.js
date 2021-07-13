@@ -132,13 +132,14 @@ export default function () {
                       console.log("contained");
                       console.log(messageContainer.childNodes[1].innerText);
                       console.log(messageContainer.childNodes[1].childNodes)
-                      let messageData = getMessage(1).message
-
+                    
+                      
                       let mIndex = messageContainer.parentNode.getAttribute("messageElementID")
                       console.log(mIndex)
 
                       mElement = document.querySelectorAll(".cozyMessage-3V1Y8y");
                       
+                      let author;
                       for (let i = mIndex; i >= 0; i--) {
                        console.log(i)
                         let mContainer;
@@ -152,14 +153,17 @@ export default function () {
                         
                         if (mContainer.childNodes.length == 3) {
                           console.log(mContainer.childNodes)
+                          author = {
+                            authorAvatar: mContainer.childNodes[0].src,
+                            authorUsername: mContainer.childNodes[1].innerText,
+                          }
                           break;
                           }
   
                       }
-                      
-             
-
-                     
+                      let data = {...author, ...getMessage(1)}
+                      console.log(data)
+                      let messageData = getMessage(1).message
 
                       chrome.storage.sync.set({
                         message: messageData,
