@@ -20,10 +20,11 @@ export default function () {
 
   if (mainElement) {
 
-    mainElement.forEach((item) => {
+    mainElement.forEach((item, index) => {
       let btnNum = 0;
       item.addEventListener("mouseover", (event) => {
         // console.log(item.childNodes[2].childNodes[0].childNodes[0])
+        item.setAttribute("messageElementID", index)
         if (btnNum == 0) {
           try {
             let buttonGroupDiv;
@@ -37,6 +38,7 @@ export default function () {
               buttonGroupDiv = item.childNodes[2].childNodes[0].childNodes[0];
               wrapper = item.childNodes[2].childNodes[0];
               messageContainer = item.childNodes[0];
+           
             } else if (
               item.childNodes.length == 4 &&
               item.childNodes[3].classList.contains("buttonContainer-DHceWr")
@@ -44,6 +46,7 @@ export default function () {
               buttonGroupDiv = item.childNodes[3].childNodes[0].childNodes[0];
               wrapper = item.childNodes[3].childNodes[0];
               messageContainer = item.childNodes[1];
+    
             }
 
             if (
@@ -130,6 +133,33 @@ export default function () {
                       console.log(messageContainer.childNodes[1].innerText);
                       console.log(messageContainer.childNodes[1].childNodes)
                       let messageData = getMessage(1).message
+
+                      let mIndex = messageContainer.parentNode.getAttribute("messageElementID")
+                      console.log(mIndex)
+
+                      mElement = document.querySelectorAll(".cozyMessage-3V1Y8y");
+                      
+                      for (let i = mIndex; i >= 0; i--) {
+                       console.log(i)
+                        let mContainer;
+                        console.log(mElement[i].childNodes)
+                        
+                          if (mElement[i].childNodes.length == 3 && mElement[i].childNodes[2].classList.contains("buttonContainer-DHceWr")) {
+                            mContainer = mElement[i].childNodes[0];
+                          } else if (mElement[i].childNodes.length == 4 && mElement[i].item.childNodes[3].classList.contains("buttonContainer-DHceWr")) {
+                            meContainer = mElement[i].childNodes[1];
+                          }
+                        
+                        if (mContainer.childNodes.length == 3) {
+                          console.log(mContainer.childNodes)
+                          break;
+                          }
+  
+                      }
+                      
+             
+
+                     
 
                       chrome.storage.sync.set({
                         message: messageData,
