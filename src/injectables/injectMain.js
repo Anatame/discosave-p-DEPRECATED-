@@ -125,6 +125,16 @@ export default function () {
                     return data;
                   }
 
+                  function sendMes(data) {
+                    chrome.storage.sync.set({
+                      message: data,
+                    });
+
+                    chrome.runtime.sendMessage({
+                      msg: "sendMessage",
+                    });
+                  }
+
                   if (event.type == "click") {
                     console.log("click");
 
@@ -165,13 +175,9 @@ export default function () {
                       console.log(data)
                       let messageData = getMessage(1).message
 
-                      chrome.storage.sync.set({
-                        message: data,
-                      });
+                      sendMes(data)
 
-                      chrome.runtime.sendMessage({
-                        msg: "sendMessage",
-                      });
+                      
                     } else if (messageContainer.childNodes.length == 3) {
                       console.log("alone");
                       console.log(messageContainer.childNodes[2].innerText);
@@ -187,13 +193,9 @@ export default function () {
                       let data = {...author, ...getMessage(2)}
                       console.log(data)
 
-                      chrome.storage.sync.set({
-                        message: messageData,
-                      });
+                      sendMes(data)
 
-                      chrome.runtime.sendMessage({
-                        msg: "sendMessage",
-                      });
+                    
                     } else if (messageContainer.childNodes.length == 4) {
                       console.log("containsReply");
                       console.log(
@@ -211,13 +213,8 @@ export default function () {
                       let data = {...author, ...getMessage(3)}
                       console.log(data)
 
-                      chrome.storage.sync.set({
-                        message: messageData,
-                      });
+                      sendMes(data)
 
-                      chrome.runtime.sendMessage({
-                        msg: "sendMessage",
-                      });
                     }
                   } else if (event.type == "mouseenter") {
                     div.style.backgroundColor = "#4f545c29";
