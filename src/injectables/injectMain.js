@@ -166,7 +166,7 @@ export default function () {
                       let messageData = getMessage(1).message
 
                       chrome.storage.sync.set({
-                        message: messageData,
+                        message: data,
                       });
 
                       chrome.runtime.sendMessage({
@@ -178,6 +178,14 @@ export default function () {
                       console.log(messageContainer.childNodes[2].childNodes)
 
                       let messageData = getMessage(2).message
+
+                      let author = {
+                        authorAvatar: messageContainer.childNodes[0].src,
+                        authorUsername: messageContainer.childNodes[1].innerText,
+                      }
+
+                      let data = {...author, ...getMessage(2)}
+                      console.log(data)
 
                       chrome.storage.sync.set({
                         message: messageData,
@@ -194,6 +202,14 @@ export default function () {
                       console.log(messageContainer.childNodes[3].childNodes)
 
                       let messageData = getMessage(3).message
+
+                      let author = {
+                        authorAvatar: messageContainer.childNodes[0].src,
+                        authorUsername: messageContainer.childNodes[1].innerText,
+                      }
+
+                      let data = {...author, ...getMessage(3)}
+                      console.log(data)
 
                       chrome.storage.sync.set({
                         message: messageData,
