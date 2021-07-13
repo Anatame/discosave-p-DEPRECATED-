@@ -163,9 +163,10 @@ export default function () {
                         
                         if (mContainer.childNodes.length == 3) {
                           console.log(mContainer.childNodes)
+                          console.log(mContainer.childNodes[1].childNodes)
                           author = {
                             authorAvatar: mContainer.childNodes[0].src,
-                            authorUsername: mContainer.childNodes[1].innerText,
+                            authorUsername: mContainer.childNodes[1].childNodes[0].innerText,
                           }
                           break;
                           }
@@ -185,9 +186,10 @@ export default function () {
 
                       let messageData = getMessage(2).message
 
+                      console.log(messageContainer.childNodes[1].childNodes[0].innerText)
                       let author = {
                         authorAvatar: messageContainer.childNodes[0].src,
-                        authorUsername: messageContainer.childNodes[1].innerText,
+                        authorUsername: messageContainer.childNodes[1].childNodes[0].innerText,
                       }
 
                       let data = {...author, ...getMessage(2)}
@@ -204,10 +206,10 @@ export default function () {
                       console.log(messageContainer.childNodes[3].childNodes)
 
                       let messageData = getMessage(3).message
-
+                      console.log(messageContainer.childNodes[1].childNodes)
                       let author = {
                         authorAvatar: messageContainer.childNodes[0].src,
-                        authorUsername: messageContainer.childNodes[1].innerText,
+                        authorUsername: messageContainer.childNodes[1].childNodes[0].innerText
                       }
 
                       let data = {...author, ...getMessage(3)}
