@@ -30,6 +30,7 @@ export default function () {
             let buttonGroupDiv;
             let messageContainer;
             let wrapper;
+            let embeddedImageContainer;
             // buttonContainer-DHceWr
             if (
               item.childNodes.length == 3 &&
@@ -38,7 +39,7 @@ export default function () {
               buttonGroupDiv = item.childNodes[2].childNodes[0].childNodes[0];
               wrapper = item.childNodes[2].childNodes[0];
               messageContainer = item.childNodes[0];
-           
+              embeddedImageContainer = item.childNodes[1]
             } else if (
               item.childNodes.length == 4 &&
               item.childNodes[3].classList.contains("buttonContainer-DHceWr")
@@ -46,7 +47,8 @@ export default function () {
               buttonGroupDiv = item.childNodes[3].childNodes[0].childNodes[0];
               wrapper = item.childNodes[3].childNodes[0];
               messageContainer = item.childNodes[1];
-    
+              embeddedImageContainer = item.childNodes[2]
+
             }
 
             if (
@@ -69,6 +71,9 @@ export default function () {
               div.appendChild(button);
               buttonGroupDiv.prepend(div);
               btnNum = 1;
+
+          
+                       
 
               [
                 "click",
@@ -117,11 +122,16 @@ export default function () {
                       }
                     })
 
+                    if (message == "") {
+                      message = embeddedImageContainer.childNodes[0].childNodes[0].href
+                    }
+
                     let data = {
                       message: message,
                       baseURI: baseURI,
                     }
                     console.log(data)
+                  
                     return data;
                   }
 
@@ -151,15 +161,15 @@ export default function () {
                       
                       let author;
                       for (let i = mIndex; i >= 0; i--) {
-                       console.log(i)
+                        console.log(i)
                         let mContainer;
                         console.log(mElement[i].childNodes)
                         
-                          if (mElement[i].childNodes.length == 3 && mElement[i].childNodes[2].classList.contains("buttonContainer-DHceWr")) {
-                            mContainer = mElement[i].childNodes[0];
-                          } else if (mElement[i].childNodes.length == 4 && mElement[i].item.childNodes[3].classList.contains("buttonContainer-DHceWr")) {
-                            meContainer = mElement[i].childNodes[1];
-                          }
+                        if (mElement[i].childNodes.length == 3 && mElement[i].childNodes[2].classList.contains("buttonContainer-DHceWr")) {
+                          mContainer = mElement[i].childNodes[0];
+                        } else if (mElement[i].childNodes.length == 4 && mElement[i].item.childNodes[3].classList.contains("buttonContainer-DHceWr")) {
+                          meContainer = mElement[i].childNodes[1];
+                        }
                         
                         if (mContainer.childNodes.length == 3) {
                           console.log(mContainer.childNodes)
@@ -169,10 +179,10 @@ export default function () {
                             authorUsername: mContainer.childNodes[1].childNodes[0].innerText,
                           }
                           break;
-                          }
+                        }
   
                       }
-                      let data = {...author, ...getMessage(1)}
+                      let data = { ...author, ...getMessage(1) }
                       console.log(data)
                       let messageData = getMessage(1).message
 
@@ -192,7 +202,7 @@ export default function () {
                         authorUsername: messageContainer.childNodes[1].childNodes[0].innerText,
                       }
 
-                      let data = {...author, ...getMessage(2)}
+                      let data = { ...author, ...getMessage(2) }
                       console.log(data)
 
                       sendMes(data)
@@ -212,7 +222,7 @@ export default function () {
                         authorUsername: messageContainer.childNodes[1].childNodes[0].innerText
                       }
 
-                      let data = {...author, ...getMessage(3)}
+                      let data = { ...author, ...getMessage(3) }
                       console.log(data)
 
                       sendMes(data)
@@ -244,6 +254,7 @@ export default function () {
                 });
               });
             }
+          
           } catch (err) {
             // if any error, Code throws the error
             // console.log("not found")
