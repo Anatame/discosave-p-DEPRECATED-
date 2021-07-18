@@ -37,9 +37,13 @@ export default function () {
          embeddedImageContainer = item.childNodes[1]
 
          console.log(embeddedImageContainer.childNodes)
-         if (embeddedImageContainer.childNodes.length == 0) {
-            saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
-         }
+
+         if(embeddedImageContainer.childNodes.length == 0 || embeddedImageContainer.childNodes[0].classList.length == 2 ){
+               saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
+            } 
+         // if (embeddedImageContainer.childNodes.length == 0) {
+         //    saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
+         // }
 
 
       } else if (item.childNodes.length == 4 && item.childNodes[3].classList.contains("buttonContainer-DHceWr")) {
@@ -48,9 +52,14 @@ export default function () {
          messageContainer = item.childNodes[1];
          embeddedImageContainer = item.childNodes[2]
 
-         if (embeddedImageContainer.childNodes.length == 0) {
-            saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
-         }
+         console.log(embeddedImageContainer.childNodes)
+
+         if(embeddedImageContainer.childNodes.length == 0 || embeddedImageContainer.childNodes[0].classList.length == 2 ){
+               saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
+            } 
+         // if (embeddedImageContainer.childNodes.length == 0) {
+         //    saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
+         // }
       }
 
 
