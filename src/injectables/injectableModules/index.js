@@ -1,9 +1,13 @@
-import createButton from './createButton'
-import createToolTip from './createToolTip'
-import getMessage from './getMessage'
+import createBtn from '../createButton'
+import createToolTip from './methods/createToolTip'
+import getMessage from './methods/getMessage'
+import sendMes from './methods/sendMes'
+import getMessageHandler from './methods/getMessageHandler'
 
 export {
-   createButton,
+   createBtn,
    createToolTip,
    getMessage,
+   sendMes,
+   getMessageHandler,
 }

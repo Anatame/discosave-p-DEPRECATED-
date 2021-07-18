@@ -67,13 +67,16 @@ export default function () {
               button.style.backgroundColor = "transparent";
               // button.style.margin = "4px"
               // buttonGroupDiv.style.backgroundColor = "#121212";
-              div.appendChild(button);
+              if (embeddedImageContainer.childNodes.length == 0) {
+                div.appendChild(button);
+                buttonGroupDiv.prepend(div);
+               }            
           
              
               // let isEmbed = false;
               // isEmbed = embeddedImageContainer.childNodes[0].classList.contains("embedFull-2tM8--")
            
-                buttonGroupDiv.prepend(div);
+              
           
               btnNum = 1;
               [

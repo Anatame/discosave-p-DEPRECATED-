@@ -1,5 +1,4 @@
-export default function getMessage() {
-   function getMessage(nodeIndex) {
+export default function getMessage(messageContainer, nodeIndex) {
       let baseURI = ""
       let message = ""
       messageContainer.childNodes[nodeIndex].childNodes.forEach((node) => {
@@ -34,5 +33,5 @@ export default function getMessage() {
       console.log(data)
     
       return data;
-    }
+    
 }

@@ -1,4 +1,4 @@
-import injectMain from './injectMain'
+import injectMain from './injectMain';
 
 async function activateScript() {
    console.log("activate Script 1 called");
