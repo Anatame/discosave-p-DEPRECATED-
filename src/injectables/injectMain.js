@@ -51,8 +51,7 @@ export default function () {
 
             }
 
-            if (
-              buttonGroupDiv.childNodes.length <= 3 && !buttonGroupDiv.childNodes[0].classList.contains("saveBtn")) {
+            if ( buttonGroupDiv.childNodes.length <= 3 && !buttonGroupDiv.childNodes[0].classList.contains("saveBtn")) {
               console.log(buttonGroupDiv.childNodes)
               let div = document.createElement("div");
               // div.style.width = "100%";
@@ -69,12 +68,14 @@ export default function () {
               // button.style.margin = "4px"
               // buttonGroupDiv.style.backgroundColor = "#121212";
               div.appendChild(button);
-              buttonGroupDiv.prepend(div);
-              btnNum = 1;
-
           
-                       
-
+             
+              // let isEmbed = false;
+              // isEmbed = embeddedImageContainer.childNodes[0].classList.contains("embedFull-2tM8--")
+           
+                buttonGroupDiv.prepend(div);
+          
+              btnNum = 1;
               [
                 "click",
                 "mouseenter",
