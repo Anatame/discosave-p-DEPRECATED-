@@ -51,8 +51,10 @@ export default function () {
 
             }
 
+            
+
             if ( buttonGroupDiv.childNodes.length <= 3 && !buttonGroupDiv.childNodes[0].classList.contains("saveBtn")) {
-              console.log(buttonGroupDiv.childNodes)
+              // console.log(buttonGroupDiv.childNodes)
               let div = document.createElement("div");
               // div.style.width = "100%";
               div.classList.add("button-1ZiXG9");
@@ -65,12 +67,67 @@ export default function () {
               button.style.width = "22px";
               button.style.height = "22px";
               button.style.backgroundColor = "transparent";
+              div.appendChild(button);
               // button.style.margin = "4px"
               // buttonGroupDiv.style.backgroundColor = "#121212";
-              if (embeddedImageContainer.childNodes.length == 0) {
-                div.appendChild(button);
+
+              function getMessage(messageContainer, embeddedImageContainer, nodeIndex) {
+                let baseURI = ""
+                let message = ""
+                messageContainer.childNodes[nodeIndex].childNodes.forEach((node) => {
+                   if (node) {
+                      if (node.nodeName == "SPAN") {
+                         console.log(node.firstChild.ariaLabel)
+                         message += node.firstChild.ariaLabel
+                         if (baseURI != node.baseURI) {
+                            baseURI = node.baseURI
+                         }
+                      } else {
+                         console.log("Text node")
+                         message += node.textContent
+                         if (baseURI != node.baseURI) {
+                            baseURI = node.baseURI
+                         }
+                      }
+          
+                   } else {
+                      console.log("undefined")
+                   }
+                })
+          
+                if (message == "") {
+                   message = embeddedImageContainer.childNodes[0].childNodes[0].href
+                }
+          
+                let data = {
+                   message: message,
+                   baseURI: baseURI,
+                }
+                console.log(data)
+          
+                return data;
+             }
+
+             let message = "";
+
+             if (messageContainer.childNodes.length == 2) {
+                message = getMessage(messageContainer, embeddedImageContainer, 1).message
+             } else if (messageContainer.childNodes.length == 3) {
+                message = getMessage(messageContainer, embeddedImageContainer, 2).message
+             } else if (messageContainer.childNodes.length == 4) {
+                message = getMessage(messageContainer, embeddedImageContainer, 3).message
+             }
+
+              console.log(messageContainer.childNodes.length)
+    
+    
+             if (message !== undefined && messageContainer.childNodes.length !== 1) {
                 buttonGroupDiv.prepend(div);
-               }            
+             }
+
+              console.log(message);
+
+                    
           
              
               // let isEmbed = false;

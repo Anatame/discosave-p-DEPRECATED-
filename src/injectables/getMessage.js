@@ -1,4 +1,4 @@
-export default function getMessage(messageContainer, embeddedImageContainer, nodeIndex) {
+export default function (messageContainer, embeddedImageContainer, nodeIndex) {
       let baseURI = ""
       let message = ""
       messageContainer.childNodes[nodeIndex].childNodes.forEach((node) => {

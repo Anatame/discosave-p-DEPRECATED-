@@ -1,4 +1,5 @@
-import injectMain from './injectable';
+import injectMain from './injectMain';
+
 
 async function activateScript() {
    console.log("activate Script 1 called");
@@ -32,7 +33,7 @@ async function injectMainScript() {
       target: {
         tabId: tab.id,
       },
-       function: injectMain
+       function:  injectMain
     });
 }
 

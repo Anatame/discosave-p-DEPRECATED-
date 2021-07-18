@@ -1,3 +1,6 @@
+import getMessage from "./getMessage";
+// import {getMessageHandler} from './injectableModules/index'
+
 export default function () {
 
    let messageElement = document.querySelectorAll(".cozyMessage-3V1Y8y");
@@ -36,8 +39,9 @@ export default function () {
          messageContainer = item.childNodes[0];
          embeddedImageContainer = item.childNodes[1]
 
-         console.log(embeddedImageContainer.childNodes)
+         //console.log(embeddedImageContainer.childNodes)
 
+         getMessageHandler()
          let message = "";
 
          if (messageContainer.childNodes.length == 2) {
@@ -65,7 +69,8 @@ export default function () {
          messageContainer = item.childNodes[1];
          embeddedImageContainer = item.childNodes[2]
 
-         console.log(embeddedImageContainer.childNodes)
+//console.log(embeddedImageContainer.childNodes)
+         getMessageHandler()
 
          let message = "";
 
