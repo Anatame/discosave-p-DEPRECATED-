@@ -38,12 +38,25 @@ export default function () {
 
          console.log(embeddedImageContainer.childNodes)
 
-         if(embeddedImageContainer.childNodes.length == 0 || embeddedImageContainer.childNodes[0].classList.length == 2 ){
+         let message = "";
+
+         if (messageContainer.childNodes.length == 2) {
+            message = getMessage(messageContainer, embeddedImageContainer, 1).message
+         } else if (messageContainer.childNodes.length == 3) {
+            message = getMessage(messageContainer, embeddedImageContainer, 2).message
+         } else if (messageContainer.childNodes.length == 4) {
+            message = getMessage(messageContainer, embeddedImageContainer, 3).message
+         }
+
+         if (message != "") {
+            if (embeddedImageContainer.childNodes.length == 0 || embeddedImageContainer.childNodes[0].classList.length == 2 || message !== undefined) {
                saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
-            } 
-         // if (embeddedImageContainer.childNodes.length == 0) {
-         //    saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
-         // }
+            }
+
+         }
+
+         console.log(message)
+
 
 
       } else if (item.childNodes.length == 4 && item.childNodes[3].classList.contains("buttonContainer-DHceWr")) {
@@ -54,12 +67,25 @@ export default function () {
 
          console.log(embeddedImageContainer.childNodes)
 
-         if(embeddedImageContainer.childNodes.length == 0 || embeddedImageContainer.childNodes[0].classList.length == 2 ){
-               saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
-            } 
-         // if (embeddedImageContainer.childNodes.length == 0) {
-         //    saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
-         // }
+         let message = "";
+
+         if (messageContainer.childNodes.length == 2) {
+            message = getMessage(messageContainer, embeddedImageContainer, 1).message
+         } else if (messageContainer.childNodes.length == 3) {
+            message = getMessage(messageContainer, embeddedImageContainer, 2).message
+         } else if (messageContainer.childNodes.length == 4) {
+            message = getMessage(messageContainer, embeddedImageContainer, 3).message
+         }
+
+
+         if (embeddedImageContainer.childNodes.length == 0 || embeddedImageContainer.childNodes[0].classList.length == 2 || message !== undefined) {
+            saveBtnHandler(buttonGroupDiv, messageContainer, wrapper)
+         }
+
+
+
+         console.log(message)
+
       }
 
 
@@ -111,6 +137,43 @@ export default function () {
             })
          })
       }
+   }
+
+   function getMessage(messageContainer, embeddedImageContainer, nodeIndex) {
+      let baseURI = ""
+      let message = ""
+      messageContainer.childNodes[nodeIndex].childNodes.forEach((node) => {
+         if (node) {
+            if (node.nodeName == "SPAN") {
+               console.log(node.firstChild.ariaLabel)
+               message += node.firstChild.ariaLabel
+               if (baseURI != node.baseURI) {
+                  baseURI = node.baseURI
+               }
+            } else {
+               console.log("Text node")
+               message += node.textContent
+               if (baseURI != node.baseURI) {
+                  baseURI = node.baseURI
+               }
+            }
+
+         } else {
+            console.log("undefined")
+         }
+      })
+
+      if (message == "") {
+         message = embeddedImageContainer.childNodes[0].childNodes[0].href
+      }
+
+      let data = {
+         message: message,
+         baseURI: baseURI,
+      }
+      console.log(data)
+
+      return data;
    }
 
    function createButton() {
