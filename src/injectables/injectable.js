@@ -149,17 +149,20 @@ export default function () {
       let message = ""
       messageContainer.childNodes[nodeIndex].childNodes.forEach((node) => {
          if (node) {
+            console.log(node)
             if (node.nodeName == "SPAN") {
                console.log(node.firstChild.ariaLabel)
                message += node.firstChild.ariaLabel
                if (baseURI != node.baseURI) {
                   baseURI = node.baseURI
+                  console.log(node)
                }
             } else {
                console.log("Text node")
                message += node.textContent
                if (baseURI != node.baseURI) {
                   baseURI = node.baseURI
+                  console.log(node)
                }
             }
 

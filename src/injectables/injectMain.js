@@ -96,7 +96,10 @@ export default function () {
                 })
           
                 if (message == "") {
-                   message = embeddedImageContainer.childNodes[0].childNodes[0].href
+                  message = embeddedImageContainer.childNodes[0].childNodes[0].href
+                  baseURI = embeddedImageContainer.childNodes[0].baseURI
+
+              
                 }
           
                 let data = {
@@ -185,6 +188,7 @@ export default function () {
 
                     if (message == "") {
                       message = embeddedImageContainer.childNodes[0].childNodes[0].href
+                      baseURI = embeddedImageContainer.childNodes[0].baseURI
                     }
 
                     let data = {
