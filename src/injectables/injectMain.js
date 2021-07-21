@@ -98,8 +98,15 @@ export default function () {
                 if (message == "") {
                   message = embeddedImageContainer.childNodes[0].childNodes[0].href
                   baseURI = embeddedImageContainer.childNodes[0].baseURI
+                  if (message == "" || message === undefined) {
+                    message = embeddedImageContainer.childNodes[0].childNodes[0].childNodes[0].childNodes[1].currentSrc
+                    console.log(embeddedImageContainer.childNodes[0].childNodes[0].childNodes[0].childNodes[1].currentSrc)
+                    baseURI = embeddedImageContainer.childNodes[0].childNodes[0].childNodes[0].childNodes[1].baseURI
 
-              
+
+
+
+                  }
                 }
           
                 let data = {
@@ -119,16 +126,18 @@ export default function () {
                 message = getMessage(messageContainer, embeddedImageContainer, 2).message
              } else if (messageContainer.childNodes.length == 4) {
                 message = getMessage(messageContainer, embeddedImageContainer, 3).message
-             }
+             } 
 
               console.log(messageContainer.childNodes.length)
+              console.log(messageContainer.childNodes)
     
     
-             if (message !== undefined && messageContainer.childNodes.length !== 1) {
+             if (message !== undefined && messageContainer.childNodes.length !== 1 || embeddedImageContainer.childNodes[0].className == "messageAttachment-1aDidq") {
                 buttonGroupDiv.prepend(div);
              }
 
               console.log(message);
+              console.log(embeddedImageContainer.childNodes)
 
                     
           

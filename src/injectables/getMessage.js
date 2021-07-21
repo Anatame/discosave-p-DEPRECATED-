@@ -24,6 +24,7 @@ export default function (messageContainer, embeddedImageContainer, nodeIndex) {
 
       if (message == "") {
          message = embeddedImageContainer.childNodes[0].childNodes[0].href
+         console.log(embeddedImageContainer.childNodes)
       }
 
       let data = {
