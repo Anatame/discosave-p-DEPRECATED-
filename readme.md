@@ -30,4 +30,4 @@ Most of the missing features will be added in future releases/updates.
 ---
 
 ## Source
-The source code contains legacy files and needs to be refactored. This project was very expiremental to me at first and I didn't focus on the best practices. It will be refactored and improved once I get enough time.
+The source code contains legacy files and needs to be refactored. This project was very experimental to me at first and I didn't focus on best practices. It will be refactored and improved once I get enough time.
