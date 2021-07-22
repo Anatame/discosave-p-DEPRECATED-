@@ -30,7 +30,7 @@ chrome.storage.sync.get(
 }) => {
    renderProfile(profile);
    userGuilds.forEach(async (guild, index) => {
-      let response = await fetch(`http://127.0.0.1:5000/users/${guild.id}`)
+      let response = await fetch(`https://discosave.herokuapp.com/users/${guild.id}`)
       response = await response.json();
       if (response.id != "notFound") {
         handleGuildRender(response, index)

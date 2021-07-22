@@ -57,7 +57,7 @@ function sendMessage() {
    chrome.storage.sync.get(
       ["channelID", "message"],
       ({ channelID, message }) => {
-         postData("http://127.0.0.1:5000/users/message", {channel: channelID, messageData: message})
+         postData("https://discosave.herokuapp.com/users/message", {channel: channelID, messageData: message})
       })
 }
 

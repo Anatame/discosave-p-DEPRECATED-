@@ -43,7 +43,7 @@ export default async function getUserData(userUrl, guildUrl, token) {
 
 
 async function fetchUser(id) {
-   await fetch(`http://127.0.0.1:5000/users/${id}`)
+   await fetch(`https://discosave.herokuapp.com/users/${id}`)
       .then(response => response.json())
       .then(data => {
 
