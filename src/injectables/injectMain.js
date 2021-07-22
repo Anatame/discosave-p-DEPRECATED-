@@ -198,6 +198,11 @@ export default function () {
                     if (message == "") {
                       message = embeddedImageContainer.childNodes[0].childNodes[0].href
                       baseURI = embeddedImageContainer.childNodes[0].baseURI
+                      if (message == "" || message === undefined) {
+                        message = embeddedImageContainer.childNodes[0].childNodes[0].childNodes[0].childNodes[1].currentSrc
+                        console.log(embeddedImageContainer.childNodes[0].childNodes[0].childNodes[0].childNodes[1].currentSrc)
+                        baseURI = embeddedImageContainer.childNodes[0].childNodes[0].childNodes[0].childNodes[1].baseURI
+                      }
                     }
 
                     let data = {
