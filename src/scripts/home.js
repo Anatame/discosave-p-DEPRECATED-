@@ -146,6 +146,10 @@ changeBtn.addEventListener("click", () => {
    Array.from(channelList.childNodes).forEach(element => element.remove())
 })
 
+logout.addEventListener("click", () => {
+   chrome.storage.sync.set({ "loginStatus": "false" })
+   window.location.replace('./popup.html')
+})
 
 // let roboto_font = new FontFace('Roboto-Regular',  `url(${chrome.runtime.getURL("/fonts/Roboto-Regular.ttf")})`);
 // roboto_fon.load().then(function(loaded_face) {
