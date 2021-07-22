@@ -7,7 +7,7 @@ This extension helps you save important messages from any server channel to your
 > ***Please note: This extension is not complete and still in alpha phase. Expect bugs to happen and more features will be improved and added.***
 
 # How to add?
-Just download the zip file from here, extract it to a folder and then go to manage extensions > load unpacked extension > set the parth to the extracted folder and done!
+Just download the zip file from [releases](https://github.com/Anatame/discosave-p/releases/tag/1.0), extract it to a folder and then go to manage extensions > load unpacked extension > set the parth to the extracted folder and done!
 
 ## How to use?
 
@@ -15,6 +15,7 @@ Just download the zip file from here, extract it to a folder and then go to mana
  - Click authorize and select the server you would like the messages to be saved in.
  - Click on the server Icon which is colored.  **(Black and white color means those servers are not accesible.)**
  - Select the channel you would like to save the messages in.
+ - Hover over the mesage you would like to save and click on the save icon.
  - Done!
 
 ---
