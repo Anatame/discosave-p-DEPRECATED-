@@ -18,7 +18,7 @@
     "https://*.127.0.0.1/",
     "https://127.0.0.1:5000/",
     "http://127.0.0.1:5000/items",
-    "https://discosave.herokuapp.com",
+    "https://discosave.herokuapp.com/users",
     "https://discosave.herokuapp.com/",
     "https://discosave.herokuapp.com/*"
   ],

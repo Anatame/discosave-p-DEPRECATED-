@@ -28,7 +28,8 @@ chrome.storage.sync.get(
    userGuilds,
    profile
 }) => {
-   renderProfile(profile);
+    renderProfile(profile);
+    chrome.storage.sync.set({"loginStatus": "true"})
    userGuilds.forEach(async (guild, index) => {
       let response = await fetch(`https://discosave.herokuapp.com/users/${guild.id}`)
       response = await response.json();
