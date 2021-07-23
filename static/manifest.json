@@ -10,6 +10,7 @@
     "resources": ["/images/*"],
     "matches": [ "https://discord.com/*" ]
   }],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1pURVobEr8BCeZIKJYH4tgkrL8RO+qMizf67wHAz07JEnQbVc07mZpY7YQJYX8cbEyoOzbj8Lk+cFgqDU/7bwLc32/aEt0ZBEomtf52mZDr/ujQ5+ffGhL0YaaaII5QvxG0Qx4gAzaM54DZcFehg98u5VAZZcR0IzxqSOatAlgTtndNB/Q4mEwycz7YdQ0iOVX8Vtl7GIbeeAOtYNgZhh0BBtplhvi12r5SB1DNAlYUKom4SZyvQbMkg/crSJypZfrFXO7ahkBdE1jb6vDNnkxdcXpV5OV0IHTJwETD/tULuF/5J5araS+lbbl+iq5dzqmGBLdfWVta2iMIhHFfdjQIDAQAB",
 
   "permissions": ["storage", "activeTab", "scripting", "webRequest", "webNavigation", "identity"],
   "host_permissions": [
