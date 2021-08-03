@@ -53,7 +53,7 @@ export default function () {
 
             
 
-            if ( buttonGroupDiv.childNodes.length <= 3 && !buttonGroupDiv.childNodes[0].classList.contains("saveBtn")) {
+            if (!buttonGroupDiv.childNodes[0].classList.contains("saveBtn")) {
               // console.log(buttonGroupDiv.childNodes)
               let div = document.createElement("div");
               // div.style.width = "100%";
@@ -131,6 +131,7 @@ export default function () {
               console.log(messageContainer.childNodes.length)
               console.log(messageContainer.childNodes)
     
+         
     
              if (message !== undefined && messageContainer.childNodes.length !== 1 || embeddedImageContainer.childNodes[0].className == "messageAttachment-1aDidq") {
                 buttonGroupDiv.prepend(div);
