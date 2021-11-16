@@ -1,3 +1,5 @@
+This version of the discosave extension is no longer worked on. Version 2 is coming soon.
+
 # [Download Here](https://github.com/Anatame/discosave-p/archive/refs/tags/1.0.1.zip)
 # Welcome to DiscoSave!
 ![logo48](https://user-images.githubusercontent.com/77446233/126642246-f0e49ada-ed30-4fe9-a4f8-b8c815845138.png)
@@ -5,7 +7,6 @@
 Hey there, 
 This extension helps you save important messages from any server channel to your own personal server.
 
-> ***Please note: This extension is not complete and still is in alpha phase. Expect bugs to happen and more features will be improved and added.***
 
 # How to add?
 Just download the zip file from [releases](https://github.com/Anatame/discosave-p/releases/tag/1.0.1), extract it to a folder and then go to manage extensions > load unpacked extension > set the path to the **dist** folder inside extracted folder and done!
