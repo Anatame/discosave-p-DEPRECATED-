@@ -1,4 +1,4 @@
-`This version of the discosave extension is no longer worked on. Version 2 is coming soon.`
+# `This version of the discosave extension is no longer worked on. Version 2 is coming soon.`
 
 # [Download Here](https://github.com/Anatame/discosave-p/archive/refs/tags/1.0.1.zip)
 # Welcome to DiscoSave!
